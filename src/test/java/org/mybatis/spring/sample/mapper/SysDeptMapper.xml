@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper SYSTEM "mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.spring.sample.mapper.SysDeptMapper">
+
+    <resultMap id="baseMapper" type="org.mybatis.spring.sample.domain.SysDept">
+        <id column="deptId"             property="deptId"/>
+        <result column="pid"            property="pid"/>
+        <result column="pids"           property="pids"         javaType="long"     typeHandler="cn.eid.handler.FastJsonTypeHandler"/>
+        <result column="simpleName"     property="simpleName"/>
+        <result column="fullName"       property="fullName"/>
+        <result column="description"    property="description"/>
+        <result column="version"        property="version"/>
+        <result column="sort"           property="sort"/>
+        <result column="createTime"     property="createTime"/>
+        <result column="updateTime"     property="updateTime"/>
+        <result column="createUser"     property="createUser"/>
+        <result column="updateUser"     property="updateUser"/>
+    </resultMap>
+    <select id="getById" resultMap="baseMapper">
+        select
+            dept_id     deptId,
+            pid         pid,
+            pids        pids,
+            simple_name simpleName,
+            full_name   fullName,
+            description description,
+            version     version,
+            sort        sort,
+            create_time createTime,
+            update_time updateTime,
+            create_user createUser,
+            update_user updateUser
+        from
+            sys_dept
+        where
+            dept_id=#{id}
+    </select>
+</mapper>
