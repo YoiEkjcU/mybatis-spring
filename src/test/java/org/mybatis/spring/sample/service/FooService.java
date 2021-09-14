@@ -3,12 +3,14 @@ package org.mybatis.spring.sample.service;
 import org.mybatis.spring.sample.domain.SysDept;
 import org.mybatis.spring.sample.mapper.SysDeptMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * FooService simply receives a userId and uses a mapper to get a record from the database.
  */
 @Transactional
+@Service
 public class FooService {
 
     @Autowired

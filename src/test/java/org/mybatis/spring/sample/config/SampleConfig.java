@@ -3,15 +3,16 @@ package org.mybatis.spring.sample.config;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.sample.service.FooService;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
 @Configuration
-@MapperScan(basePackages = "org.mybatis.spring.sample.mapper")
+@ComponentScan("org.mybatis.spring.sample")
+@MapperScan("org.mybatis.spring.sample.mapper")
 public class SampleConfig {
 
     @Bean
@@ -27,10 +28,5 @@ public class SampleConfig {
         sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("org/mybatis/spring/sample/mapper/SysDeptMapper.xml"));
         SqlSessionFactory sessionFactory = sqlSessionFactoryBean.getObject();
         return sessionFactory;
-    }
-
-    @Bean
-    public FooService fooService() throws Exception {
-        return new FooService();
     }
 }
