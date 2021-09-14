@@ -2,6 +2,7 @@ package org.mybatis.spring.sample.service;
 
 import org.mybatis.spring.sample.domain.SysDept;
 import org.mybatis.spring.sample.mapper.SysDeptMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -10,11 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class FooService {
 
-    private final SysDeptMapper mapper;
-
-    public FooService(SysDeptMapper mapper) {
-        this.mapper = mapper;
-    }
+    @Autowired
+    private SysDeptMapper mapper;
 
     public SysDept doSomeBusinessStuff(Long id) {
         return this.mapper.getById(id);

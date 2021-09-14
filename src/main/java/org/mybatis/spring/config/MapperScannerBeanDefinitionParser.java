@@ -72,8 +72,7 @@ public class MapperScannerBeanDefinitionParser extends AbstractBeanDefinitionPar
             }
             String mapperFactoryBeanClassName = element.getAttribute(ATTRIBUTE_MAPPER_FACTORY_BEAN_CLASS);
             if (StringUtils.hasText(mapperFactoryBeanClassName)) {
-                @SuppressWarnings("unchecked")
-                Class<? extends MapperFactoryBean> mapperFactoryBeanClass = (Class<? extends MapperFactoryBean>) classLoader.loadClass(mapperFactoryBeanClassName);
+                Class<?> mapperFactoryBeanClass = (Class<?>) classLoader.loadClass(mapperFactoryBeanClassName);
                 builder.addPropertyValue("mapperFactoryBeanClass", mapperFactoryBeanClass);
             }
         } catch (Exception ex) {
