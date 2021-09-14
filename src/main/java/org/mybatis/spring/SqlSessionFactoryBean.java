@@ -103,8 +103,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
 
     private String typeHandlersPackage;
 
-    @SuppressWarnings("rawtypes")
-    private Class<? extends TypeHandler> defaultEnumTypeHandler;
+    private Class<? extends TypeHandler<?>> defaultEnumTypeHandler;
 
     private Class<?>[] typeAliases;
 
@@ -491,7 +490,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
      * @since 2.0.5
      * @param defaultEnumTypeHandler The default type handler class for enum
      */
-    public void setDefaultEnumTypeHandler(@SuppressWarnings("rawtypes") Class<? extends TypeHandler> defaultEnumTypeHandler) {
+    public void setDefaultEnumTypeHandler(Class<? extends TypeHandler<?>> defaultEnumTypeHandler) {
         this.defaultEnumTypeHandler = defaultEnumTypeHandler;
     }
 
